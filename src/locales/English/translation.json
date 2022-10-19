@@ -1,0 +1,12 @@
+{
+  "user": {
+    "id": "Id",
+    "name": "Name",
+    "email": "Email",
+    "website": "Website"
+  },
+  "auth": {
+    "unauthorized": "You are not authorized to access this page. Please try again.",
+    "pageNotFound": "The Page you are looking for does not exist!"
+  }
+}

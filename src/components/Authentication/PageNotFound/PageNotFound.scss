@@ -1,0 +1,25 @@
+.unauthorized-container {
+  background: #fff;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  .box-center {
+    .image-404 {
+      height: 80vh;
+      font-size: 6vw;
+      img {
+        height: 100%;
+      }
+    }
+
+    .content {
+      p {
+        font-size: 26px;
+      }
+    }
+  }
+}

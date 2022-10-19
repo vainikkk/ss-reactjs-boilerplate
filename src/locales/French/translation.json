@@ -1,0 +1,12 @@
+{
+  "user": {
+    "id": "Identifiant",
+    "name": "Nom",
+    "email": "E-mail",
+    "website": "Site Internet"
+  },
+  "auth": {
+    "unauthorized": "Vous n'êtes pas autorisé à accéder à cette page. Veuillez réessayer.",
+    "pageNotFound": "La Page que vous recherchez n'existe pas !"
+  }
+}

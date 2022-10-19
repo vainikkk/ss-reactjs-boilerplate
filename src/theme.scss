@@ -1,0 +1,442 @@
+$bodyColor: #f6f5fa;
+$whiteColor: #ffffff;
+$primaryColor: #7033ff;
+$primaryLightColor: #a962ff;
+$secondaryColor: #d9d4e7;
+$secondaryLightColor: #00e4df;
+$primaryText: #322e46;
+// Text & Border Shade
+$textShade1: #928fa0;
+$textShade2: #b4b0c8;
+$textShade3: #b8b4cc;
+$textShade4: $bodyColor;
+$textShade5: #dddddd;
+
+// Heading Color
+$headingColor2: $primaryText;
+$headingColor3: $textShade1;
+
+// Form Control
+$labelColor: $primaryText;
+$labelOptional: #9b9b9b;
+$inputColor: $textShade1;
+$borderColor: rgba(0, 0, 0, 0.1);
+
+$headingColor2: $primaryText;
+$headingColor3: $textShade1;
+
+// Mode Module
+$mode1Light: #ff8db1;
+$mode1Dark: #ff8db1;
+$mode2Light: #ffcd97;
+$mode2Dark: #ff9e5e;
+$mode3Light: #ffe874;
+$mode3Dark: #ffcc40;
+$mode4Light: #aaf0e6;
+$mode4Dark: #71dcc9;
+$mode5Light: #00e6bc;
+$mode5Dark: #00c987;
+
+$headerBg: $primaryText;
+
+$themeColor1: #f07575;
+$themeColor2: #b7a3fe;
+$themeColor3: #f3f0ff;
+$themeColor4: #0717ff;
+$themeColor5: #ff597e;
+$themeColor6: #ffcf3e;
+$themeColor7: #71dcc9;
+$themeColor8: #ff5479;
+$themeColor9: #0082fb;
+$themeColor10: #00c4bc;
+$themeColor11: #37324b;
+$themeColor12: #3c3463;
+$themeColor13: #33c5ff;
+$themeColor14: #ff9066;
+$themeColor15: #423d5b;
+$themeColor16: #979797;
+$themeColor17: #f7f7f7;
+$themeColor18: #727272;
+
+$themeGreen: #6dd400;
+$themeRed: #f07575;
+$themeYellow: #ffcc40;
+
+/* ====================
+  Shorthand mixins start
+ ==================== */
+// Border
+// ex: @include border-radius(3px);
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+//----------------------------------------------------------------------
+// Offset positioning
+// ex: @include position(absolute, auto, 50%, 0, auto);
+@mixin position(
+  $position,
+  $top: null,
+  $right: null,
+  $bottom: null,
+  $left: null
+) {
+  position: $position;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+//----------------------------------------------------------------------
+// Center any position
+// ex: @include center(true, false);
+@mixin center($horizontal: true, $vertical: true) {
+  position: absolute;
+  @if ($horizontal and $vertical) {
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  } @else if ($horizontal) {
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
+    -o-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+  } @else if ($vertical) {
+    top: 50%;
+    -webkit-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    -o-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+  } @else {
+    position: absolute;
+    top: auto;
+    left: auto;
+    -webkit-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    -o-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+}
+
+//----------------------------------------------------------------------
+// Transition any position
+// ex: @include transition(all,0.4s,ease-out);
+@mixin transition($what: all, $time: 0.2s, $how: ease-in-out) {
+  -webkit-transition: $what $time $how;
+  -moz-transition: $what $time $how;
+  -ms-transition: $what $time $how;
+  -o-transition: $what $time $how;
+  transition: $what $time $how;
+}
+
+//----------------------------------------------------------------------
+// Truncate any text
+// ex: @include truncate(100px);
+@mixin truncate($truncation-boundary) {
+  max-width: $truncation-boundary;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+//----------------------------------------------------------------------
+// Box-shadow any text
+// ex: @include box-shadow(0, 12px, 18px, rgba(0, 0, 0, 0.34), false);;
+@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+  @if $inset {
+    -webkit-box-shadow: inset $top $left $blur $color;
+    -moz-box-shadow: inset $top $left $blur $color;
+    box-shadow: inset $top $left $blur $color;
+  } @else {
+    -webkit-box-shadow: $top $left $blur $color;
+    -moz-box-shadow: $top $left $blur $color;
+    box-shadow: $top $left $blur $color;
+  }
+}
+
+//----------------------------------------------------------------------
+// Reset browser appearance
+// ex: @include x-appearance(none);
+@mixin x-appearance($value) {
+  -webkit-appearance: $value;
+  -moz-appearance: $value;
+  appearance: $value;
+}
+
+//----------------------------------------------------------------------
+// Reset browser appearance
+// ex: @include css-triangle(top, $yellow, 35px, 70px);
+@mixin css-triangle($direction, $color, $height, $width) {
+  // Base styles for all triangles
+  border-style: solid;
+  height: 0;
+  width: 0;
+  // Cardinal Directions - can't be scalene this way
+  @if ($direction == "top") {
+    border-color: transparent transparent $color transparent;
+    border-width: 0 ($width/2) $height ($width/2);
+  }
+  @if ($direction == "bottom") {
+    border-color: $color transparent transparent transparent;
+    border-width: $height ($width/2) 0 ($width/2);
+  }
+  @if ($direction == "right") {
+    border-color: transparent transparent transparent $color;
+    border-width: ($height/2) 0 ($height/2) $width;
+  }
+  @if ($direction == "left") {
+    border-color: transparent $color transparent transparent;
+    border-width: ($height/2) $width ($height/2) 0;
+  }
+  // Ordinal Directions - can be scalene this way!
+  @if ($direction == "top-left") {
+    border-color: $color transparent transparent transparent;
+    border-width: $height $width 0 0;
+  }
+  @if ($direction == "top-right") {
+    border-color: transparent $color transparent transparent;
+    border-width: 0 $width $height 0;
+  }
+  @if ($direction == "bottom-left") {
+    border-color: transparent transparent transparent $color;
+    border-width: $height 0 0 $width;
+  }
+  @if ($direction == "bottom-right") {
+    border-color: transparent transparent $color transparent;
+    border-width: 0 0 $height $width;
+  }
+}
+
+//----------------------------------------------------------------------
+// Flex browser support
+// ex: %flexbox { @include flexbox; } or %inline-flex { @include inline-flex; }
+@mixin flexbox {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+@mixin inline-flex {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -moz-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+//----------------------------------------------------------------------
+// Flex direction browser support
+// ex: @mixin flex-dir($args...) { @include flex-direction($args...); }
+@mixin flex-direction($value: row) {
+  @if $value == row-reverse {
+    -webkit-box-direction: reverse;
+    -webkit-box-orient: horizontal;
+  } @else if $value == column {
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+  } @else if $value == column-reverse {
+    -webkit-box-direction: reverse;
+    -webkit-box-orient: vertical;
+  } @else {
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+  }
+  -webkit-flex-direction: $value;
+  -moz-flex-direction: $value;
+  -ms-flex-direction: $value;
+  flex-direction: $value;
+}
+
+//----------------------------------------------------------------------
+// Flex wrap browser support
+// ex: @mixin flex-wrap($value: nowrap) | Values: nowrap | wrap | wrap-reverse
+@mixin flex-wrap($value: nowrap) {
+  -webkit-flex-wrap: $value;
+  -moz-flex-wrap: $value;
+  @if $value == nowrap {
+    -ms-flex-wrap: none;
+  } @else {
+    -ms-flex-wrap: $value;
+  }
+  flex-wrap: $value;
+}
+
+//----------------------------------------------------------------------
+// Flex flow browser support
+// ex: @mixin flex-wrap($value: nowrap) | Values: <flex-direction> | <flex-wrap>
+@mixin flex-flow(
+  $values: (
+    row nowrap,
+  )
+) {
+  -webkit-flex-flow: $values;
+  -moz-flex-flow: $values;
+  -ms-flex-flow: $values;
+  flex-flow: $values;
+}
+
+//----------------------------------------------------------------------
+// Flex order browser support
+// ex: @mixin order($value: nowrap) | Default: 0
+@mixin order($int: 0) {
+  -webkit-box-ordinal-group: $int + 1;
+  -webkit-order: $int;
+  -moz-order: $int;
+  -ms-flex-order: $int;
+  order: $int;
+}
+
+//----------------------------------------------------------------------
+// Flex full browser support
+// ex: @mixin flex(1 1 0) | Values: none | <flex-grow> <flex-shrink> || <flex-basis>
+@mixin flex($fg: 1, $fs: null, $fb: null) {
+  // Set a variable to be used by box-flex properties
+  $fg-boxflex: $fg;
+
+  // Box-Flex only supports a flex-grow value so let's grab the
+  // first item in the list and just return that.
+  @if type-of($fg) == "list" {
+    $fg-boxflex: nth($fg, 1);
+  }
+
+  -webkit-box-flex: $fg-boxflex;
+  -webkit-flex: $fg $fs $fb;
+  -moz-box-flex: $fg-boxflex;
+  -moz-flex: $fg $fs $fb;
+  -ms-flex: $fg $fs $fb;
+  flex: $fg $fs $fb;
+}
+
+//----------------------------------------------------------------------
+// Flex Justify Content browser support
+// ex: @mixin flex-just($args...) { @include justify-content($args...); }
+@mixin justify-content($value: flex-start) {
+  @if $value == flex-start {
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+  } @else if $value == flex-end {
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+  } @else if $value == space-between {
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+  } @else if $value == space-around {
+    -ms-flex-pack: distribute;
+  } @else {
+    -webkit-box-pack: $value;
+    -ms-flex-pack: $value;
+  }
+  -webkit-justify-content: $value;
+  -moz-justify-content: $value;
+  justify-content: $value;
+}
+
+//----------------------------------------------------------------------
+// Flex Align Items browser support
+// ex: @mixin align-items($args...) { @include align-items($args...); }
+@mixin align-items($value: stretch) {
+  @if $value == flex-start {
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+  } @else if $value == flex-end {
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+  } @else {
+    -webkit-box-align: $value;
+    -ms-flex-align: $value;
+  }
+  -webkit-align-items: $value;
+  -moz-align-items: $value;
+  align-items: $value;
+}
+
+//----------------------------------------------------------------------
+// Flex Align Self browser support
+// ex: @mixin align-self($args...) { @include align-self($args...); }
+@mixin align-self($value: auto) {
+  // No Webkit Box Fallback.
+  -webkit-align-self: $value;
+  -moz-align-self: $value;
+  @if $value == flex-start {
+    -ms-flex-item-align: start;
+  } @else if $value == flex-end {
+    -ms-flex-item-align: end;
+  } @else {
+    -ms-flex-item-align: $value;
+  }
+  align-self: $value;
+}
+
+//----------------------------------------------------------------------
+// Flex Align Content browser support
+// ex: @mixin align-content($args...) { @include align-content($args...); }
+@mixin align-content($value: stretch) {
+  // No Webkit Box Fallback.
+  -webkit-align-content: $value;
+  -moz-align-content: $value;
+  @if $value == flex-start {
+    -ms-flex-line-pack: start;
+  } @else if $value == flex-end {
+    -ms-flex-line-pack: end;
+  } @else {
+    -ms-flex-line-pack: $value;
+  }
+  align-content: $value;
+}
+
+//----------------------------------------------------------------------
+// Calc function
+// ex: @include calc( width, '100% - 2px');
+@mixin calc($property, $expression) {
+  #{$property}: -webkit-calc(#{$expression});
+  #{$property}: -moz-calc(#{$expression});
+  #{$property}: -ms-calc(#{$expression});
+  #{$property}: -o-calc(#{$expression});
+  #{$property}: calc(#{$expression});
+}
+
+//----------------------------------------------------------------------
+// transition-delay function
+// ex: @include transition-delay(0.5s)
+@mixin transition-delay($values) {
+  -webkit-transition-delay: $values;
+  -moz-transition-delay: $values;
+  -ms-transition: $values;
+  -o-transition-delay: $values;
+  transition-delay: $values;
+  transition-property: all;
+}
+
+// Gradient Color
+// @include gradient(#07c, #06f, vertical);
+@mixin gradient($start-color, $end-color, $orientation) {
+  background: $start-color;
+  @if $orientation == "vertical" {
+    background: -webkit-linear-gradient(top, $start-color, $end-color);
+    background: linear-gradient(to bottom, $start-color, $end-color);
+  } @else if $orientation == "horizontal" {
+    background: -webkit-linear-gradient(left, $start-color, $end-color);
+    background: linear-gradient(to right, $start-color, $end-color);
+  } @else {
+    background: -webkit-radial-gradient(
+      center,
+      ellipse cover,
+      $start-color,
+      $end-color
+    );
+    background: radial-gradient(ellipse at center, $start-color, $end-color);
+  }
+}
+
+/* ====================
+  Shorthand mixins end
+ ==================== */
