@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Error should render correctly without any error 1`] = `
+<section
+  className="unauthorized-container"
+>
+  <div
+    className="box-center"
+  >
+    <div
+      className="image-403"
+    >
+      <img
+        alt=""
+        src="403.png"
+      />
+    </div>
+    <div
+      className="content"
+    >
+      <p>
+        You are not authorized to access this page. Please try again.
+      </p>
+    </div>
+  </div>
+</section>
+`;

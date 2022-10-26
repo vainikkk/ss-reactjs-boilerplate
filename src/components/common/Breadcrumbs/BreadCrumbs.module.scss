@@ -1,0 +1,7 @@
+@use "scss/" as *;
+.breadcrumbs_wrapper {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background-color: $backgroundColor;
+  @include border-bottom();
+}

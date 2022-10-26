@@ -1,0 +1,36 @@
+.card_wrapper {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
+.integration_card {
+  padding: 1.5rem;
+  .integration_title {
+    display: flex;
+    align-items: center;
+    .title {
+      font-size: 0.88rem;
+      margin-left: 1rem;
+      font-weight: 900;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+  }
+  .integration_instance {
+    margin-left: 50px;
+  }
+  .integration_status {
+    margin-left: 50px;
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    .dot {
+      width: 8px;
+      height: 8px;
+      background-color: rgba(0, 0, 0, 0.23);
+      border-radius: 50%;
+      margin-left: -25px;
+    }
+    .status_info {
+      margin-left: 17px;
+    }
+  }
+}

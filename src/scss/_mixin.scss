@@ -1,70 +1,57 @@
-$bodyColor: #f6f5fa;
-$whiteColor: #ffffff;
-$primaryColor: #7033ff;
-$primaryLightColor: #a962ff;
-$secondaryColor: #d9d4e7;
-$secondaryLightColor: #00e4df;
-$primaryText: #322e46;
-// Text & Border Shade
-$textShade1: #928fa0;
-$textShade2: #b4b0c8;
-$textShade3: #b8b4cc;
-$textShade4: $bodyColor;
-$textShade5: #dddddd;
+@use "./variables" as *;
 
-// Heading Color
-$headingColor2: $primaryText;
-$headingColor3: $textShade1;
+@mixin flex($alignItem, $justifyContent) {
+  display: flex;
+  align-items: $alignItem;
+  justify-content: $justifyContent;
+}
 
-// Form Control
-$labelColor: $primaryText;
-$labelOptional: #9b9b9b;
-$inputColor: $textShade1;
-$borderColor: rgba(0, 0, 0, 0.1);
+@mixin absolute() {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 
-$headingColor2: $primaryText;
-$headingColor3: $textShade1;
+@mixin size($width, $height) {
+  width: $width;
+  height: $height;
+}
 
-// Mode Module
-$mode1Light: #ff8db1;
-$mode1Dark: #ff8db1;
-$mode2Light: #ffcd97;
-$mode2Dark: #ff9e5e;
-$mode3Light: #ffe874;
-$mode3Dark: #ffcc40;
-$mode4Light: #aaf0e6;
-$mode4Dark: #71dcc9;
-$mode5Light: #00e6bc;
-$mode5Dark: #00c987;
+@mixin mobile {
+  @media only screen and (max-width: $mobile-width) {
+    @content;
+  }
+}
 
-$headerBg: $primaryText;
+@mixin tablet {
+  @media only screen and (max-width: $tablet-width) {
+    @content;
+  }
+}
 
-$themeColor1: #f07575;
-$themeColor2: #b7a3fe;
-$themeColor3: #f3f0ff;
-$themeColor4: #0717ff;
-$themeColor5: #ff597e;
-$themeColor6: #ffcf3e;
-$themeColor7: #71dcc9;
-$themeColor8: #ff5479;
-$themeColor9: #0082fb;
-$themeColor10: #00c4bc;
-$themeColor11: #37324b;
-$themeColor12: #3c3463;
-$themeColor13: #33c5ff;
-$themeColor14: #ff9066;
-$themeColor15: #423d5b;
-$themeColor16: #979797;
-$themeColor17: #f7f7f7;
-$themeColor18: #727272;
+@mixin desktop-1200 {
+  @media only screen and (max-width: $desktop-width) {
+    @content;
+  }
+}
 
-$themeGreen: #6dd400;
-$themeRed: #f07575;
-$themeYellow: #ffcc40;
+@mixin desktop-1350 {
+  @media only screen and (max-width: $desktop-1350) {
+    @content;
+  }
+}
+@mixin desktop-1500 {
+  @media only screen and (max-width: $desktop-1500) {
+    @content;
+  }
+}
+@mixin desktop-1900 {
+  @media only screen and (max-width: $desktop-1900) {
+    @content;
+  }
+}
 
-/* ====================
-  Shorthand mixins start
- ==================== */
 // Border
 // ex: @include border-radius(3px);
 @mixin border-radius($radius) {
@@ -437,6 +424,10 @@ $themeYellow: #ffcc40;
   }
 }
 
+@mixin border-bottom() {
+  border-bottom: 1px solid rgb(224, 224, 224);
+}
+
 /* ====================
-  Shorthand mixins end
- ==================== */
+    Shorthand mixins end
+   ==================== */

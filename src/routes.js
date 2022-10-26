@@ -1,6 +1,9 @@
 import PageNotFound from "components/Authentication/PageNotFound/PageNotFound";
 import Header from "components/common/Header/Header";
-import UserList from "components/Users/UserComponent";
+import AddIntegration from "components/Integration/AddIntegration/AddIntegration";
+import IntegrationPage from "components/Integration/IntegrationPage/IntegrationPage";
+import IntegrationList from "components/Integration/Integrations/IntegrationComponent";
+import IntegrationSummary from "components/Integration/IntegrationSummary/IntegrationSummry";
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
@@ -28,19 +31,25 @@ export const PublicRoute = ({ component: Component, ...rest }) => {
   );
 };
 
-const RoutesConfig = ({ childProps }) => {
+const RoutesConfig = () => {
   return (
     <div>
       <Header />
       <Routes>
-        <Route path="/" element={<UserList />}>
-          <Route index element={<UserList />} />
-          {/* <Route path="teams" element={<Teams />}>
-                <Route path=":teamId" element={<Team />} />
-                <Route path="new" element={<NewTeamForm />} />
-                <Route index element={<LeagueStandings />} />
-              </Route> */}
-        </Route>
+        <Route path="/" index element={<IntegrationList />}></Route>
+        <Route path="/integration" element={<IntegrationList />} />
+        <Route
+          path="/integration/:integrationId"
+          element={<IntegrationPage />}
+        />
+        <Route
+          path="/integration/:integrationId/add"
+          element={<AddIntegration />}
+        ></Route>
+        <Route
+          path="/integration/:integrationId/:instanceId"
+          element={<IntegrationSummary />}
+        />
         <Route path="*" exact element={<PageNotFound />} />
       </Routes>
     </div>

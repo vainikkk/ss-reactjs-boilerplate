@@ -5,26 +5,36 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
-// import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-// import AdbIcon from "@mui/icons-material/Adb";
+import { Link, useNavigate } from "react-router-dom";
 
-const pages = ["Products", "Pricing", "Blog"];
+const pages = [
+  { name: "Search", link: "integration" },
+  { name: "Insights", link: "integration" },
+  { name: "Integration", link: "integration" },
+];
+
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function Header() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const navigate = useNavigate();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
+  };
+
+  const handleMenuClick = (link) => {
+    setAnchorElNav(null);
+    navigate(link);
   };
 
   const handleCloseNavMenu = () => {
@@ -37,26 +47,21 @@ function Header() {
 
   return (
     <AppBar position="sticky">
-      <Container maxWidth="xl">
+      <Container maxWidth="xxl">
         <Toolbar disableGutters>
           {/* <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} /> */}
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            LOGO
-          </Typography>
+          <Link to="/">
+            <Typography
+              variant="h6"
+              sx={{
+                borderRight: "1px solid gray",
+                marginRight: "1rem",
+                paddingRight: "1rem",
+              }}
+            >
+              SculptSoft
+            </Typography>
+          </Link>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -67,7 +72,7 @@ function Header() {
               onClick={handleOpenNavMenu}
               color="inherit"
             >
-              {/* <MenuIcon /> */}
+              {/* <MenuIcon /> */}*
             </IconButton>
             <Menu
               id="menu-appbar"
@@ -85,11 +90,12 @@ function Header() {
               onClose={handleCloseNavMenu}
               sx={{
                 display: { xs: "block", md: "none" },
+                textTransform: "none",
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem key={page} onClick={() => handleMenuClick(page.link)}>
+                  <Typography textAlign="center">{page.name}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -111,16 +117,17 @@ function Header() {
               textDecoration: "none",
             }}
           >
-            LOGO
+            SculptSoft
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
                 key={page}
-                onClick={handleCloseNavMenu}
+                onClick={() => handleMenuClick(page.link)}
                 sx={{ my: 2, color: "white", display: "block" }}
+                className="text-capitalize"
               >
-                {page}
+                {page.name}
               </Button>
             ))}
           </Box>

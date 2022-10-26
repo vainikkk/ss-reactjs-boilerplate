@@ -1,0 +1,86 @@
+$bodyColor: #f6f5fa;
+$whiteColor: #ffffff;
+$primaryColor: #7033ff;
+$primaryLightColor: #a962ff;
+$secondaryColor: #d9d4e7;
+$secondaryLightColor: #00e4df;
+$primaryText: #322e46;
+// Text & Border Shade
+$textShade1: #928fa0;
+$textShade2: #b4b0c8;
+$textShade3: #b8b4cc;
+$textShade4: $bodyColor;
+$textShade5: #dddddd;
+$backgroundColor: rgb(250, 250, 250);
+$backgroundColor2: #eceff1;
+
+// Heading Color
+$headingColor2: $primaryText;
+$headingColor3: $textShade1;
+
+// Form Control
+$labelColor: $primaryText;
+$labelOptional: #9b9b9b;
+$inputColor: $textShade1;
+$borderColor: rgba(0, 0, 0, 0.1);
+
+$headingColor2: $primaryText;
+$headingColor3: $textShade1;
+
+// Mode Module
+$mode1Light: #ff8db1;
+$mode1Dark: #ff8db1;
+$mode2Light: #ffcd97;
+$mode2Dark: #ff9e5e;
+$mode3Light: #ffe874;
+$mode3Dark: #ffcc40;
+$mode4Light: #aaf0e6;
+$mode4Dark: #71dcc9;
+$mode5Light: #00e6bc;
+$mode5Dark: #00c987;
+
+$headerBg: $primaryText;
+
+$themeColor1: #f07575;
+$themeColor2: #b7a3fe;
+$themeColor3: #f3f0ff;
+$themeColor4: #0717ff;
+$themeColor5: #ff597e;
+$themeColor6: #ffcf3e;
+$themeColor7: #71dcc9;
+$themeColor8: #ff5479;
+$themeColor9: #0082fb;
+$themeColor10: #00c4bc;
+$themeColor11: #37324b;
+$themeColor12: #3c3463;
+$themeColor13: #33c5ff;
+$themeColor14: #ff9066;
+$themeColor15: #423d5b;
+$themeColor16: #979797;
+$themeColor17: #f7f7f7;
+$themeColor18: #727272;
+
+$themeGreen: #6dd400;
+$themeRed: #f07575;
+$themeYellow: #ffcc40;
+
+$font-main: "Comic sans MS";
+$font-second: "Roboto";
+
+$bg-item-1: #7153d9;
+$bg-item-2: #7153d9;
+$bg-item-3: #4c22e1;
+
+$header-height: 120px;
+$header-shrink-height: 90px;
+
+$mobile-width: 580px;
+$mobile-width1: 767px;
+$tablet-width: 1024px;
+$desktop-width: 1200px;
+$desktop-1350: 1350px;
+$desktop-1500: 1500px;
+$desktop-1900: 1900px;
+
+$box-shadow: 0 10px 20px rgb(0 0 0 / 5%);
+$bg-overlay: rgba(0, 0, 0, 0.5);

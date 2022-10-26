@@ -8,6 +8,7 @@ import store from "./store/index";
 import "./index.css";
 // Importing the Bootstrap CSS
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./base.scss";
 
 import "./i18n";
 
